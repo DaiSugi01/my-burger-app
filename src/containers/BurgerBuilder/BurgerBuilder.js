@@ -7,7 +7,7 @@ class BurgerBuilder extends Component{
   state = {
 
   }
-  
+
   render () {
     return (
       <Aux>
