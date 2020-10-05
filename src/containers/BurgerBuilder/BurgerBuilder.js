@@ -5,7 +5,6 @@ import Burger from '../../components/Burger/Burger';
 
 class BurgerBuilder extends Component{
   state = {
-
   }
 
   render () {
