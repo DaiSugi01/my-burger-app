@@ -18,7 +18,7 @@ class BurgerBuilder extends Component {
   }
 
   componentDidMount() {
-
+    this.props.onInitIngredient();
   }
 
   updatePruchaseState (ingredients) {
@@ -27,7 +27,6 @@ class BurgerBuilder extends Component {
       .reduce((sum, ele) => {
         return sum + ele;
       }, 0)
-      // this.setState({purchasable: sum > 0});
       return sum > 0;
   }
 
@@ -54,7 +53,7 @@ class BurgerBuilder extends Component {
     }
 
     let orderSummary = null;
-    let burger = this.state.error ? <p>Ingredients can't be loaded</p> : <Spinner />
+    let burger = this.props.error ? <p>Ingredients can't be loaded</p> : <Spinner />
     
     if (this.props.ings) {
       burger = (
@@ -98,7 +97,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
-    onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName))
+    onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
+    onInitIngredient: () => dispatch(burgerBuilderActions.initIngredients())
   };
 };
 
